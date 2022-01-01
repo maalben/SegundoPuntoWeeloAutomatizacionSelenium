@@ -40,7 +40,7 @@ public class Toolsqa {
         driver.findElement(By.id("firstName")).sendKeys(name);
         driver.findElement(By.id("lastName")).sendKeys(lastName);
         driver.findElement(By.id("userEmail")).sendKeys(email);
-        selectRadio(driver, driver.findElements(By.xpath("//div[@id='genterWrapper']/div[2]/div")), gender);
+        selectRadio(driver.findElements(By.xpath("//div[@id='genterWrapper']/div[2]/div")), gender);
         moveScreen(driver, "up");
         driver.findElement(By.id("userNumber")).sendKeys(mobileNumber);
         driver.findElement(By.xpath("//div[@class='react-datepicker__input-container']")).click();
@@ -60,7 +60,7 @@ public class Toolsqa {
         driver.findElement(By.id("firstName")).sendKeys(name);
         driver.findElement(By.id("lastName")).sendKeys(lastName);
         driver.findElement(By.id("userEmail")).sendKeys(email);
-        selectRadio(driver, driver.findElements(By.xpath("//div[@id='genterWrapper']/div[2]/div")), gender);
+        selectRadio(driver.findElements(By.xpath("//div[@id='genterWrapper']/div[2]/div")), gender);
         moveScreen(driver, "up");
         driver.findElement(By.id("userNumber")).sendKeys(mobileNumber);
         driver.findElement(By.xpath("//div[@class='react-datepicker__input-container']")).click();
@@ -90,7 +90,7 @@ public class Toolsqa {
     public void validateSuccessCompletionFormFieldsRequired(){
         driver.findElement(By.id("firstName")).sendKeys(name);
         driver.findElement(By.id("lastName")).sendKeys(lastName);
-        selectRadio(driver, driver.findElements(By.xpath("//div[@id='genterWrapper']/div[2]/div")), gender);
+        selectRadio(driver.findElements(By.xpath("//div[@id='genterWrapper']/div[2]/div")), gender);
         moveScreen(driver, "up");
         driver.findElement(By.id("userNumber")).sendKeys(mobileNumber);
         driver.findElement(By.id("submit")).click();
