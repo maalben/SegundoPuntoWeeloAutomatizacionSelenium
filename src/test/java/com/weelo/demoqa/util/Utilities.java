@@ -1,9 +1,6 @@
 package com.weelo.demoqa.util;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,9 +8,7 @@ import static java.lang.Thread.sleep;
 
 public class Utilities {
 
-    private static WebDriverWait wait;
-
-    public static void selectRadio(WebDriver driver, List<WebElement> radios, String value) {
+    public static void selectRadio(List<WebElement> radios, String value) {
         for(int i=0; i<radios.size(); i++){
             if(radios.get(i).findElement(By.tagName("input")).getAttribute("value").equals(value)){
                 radios.get(i).findElement(By.tagName("label")).click();
