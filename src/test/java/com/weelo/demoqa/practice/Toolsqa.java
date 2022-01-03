@@ -7,8 +7,12 @@ import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import static com.weelo.demoqa.util.Utilities.*;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Toolsqa {
+
+    WebDriverWait wait;
 
     public static WebDriver driver;
     final String name = "Pedro";
@@ -31,6 +35,7 @@ public class Toolsqa {
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
         driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, 30);
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/automation-practice-form");
     }
@@ -52,6 +57,7 @@ public class Toolsqa {
         selectElementList(driver, "react-select-3-input", state);
         selectElementList(driver, "react-select-4-input", city);
         driver.findElement(By.id("submit")).click();
+        wait.until(visibilityOfElementLocated(By.id("example-modal-sizes-title-lg")));
         assertEquals(titleValidation, driver.findElement(By.id("example-modal-sizes-title-lg")).getText());
     }
 
@@ -72,6 +78,7 @@ public class Toolsqa {
         selectElementList(driver, "react-select-3-input", state);
         selectElementList(driver, "react-select-4-input", city);
         driver.findElement(By.id("submit")).click();
+        wait.until(visibilityOfElementLocated(By.id("example-modal-sizes-title-lg")));
         assertEquals(titleValidation, driver.findElement(By.id("example-modal-sizes-title-lg")).getText());
         String relativeRute = "//div[@class='modal-content']//table/tbody";
         assertEquals(name + " " + lastName, driver.findElement(By.xpath(relativeRute+"/tr[1]/td[2]")).getText());
@@ -94,6 +101,7 @@ public class Toolsqa {
         moveScreen(driver, "up");
         driver.findElement(By.id("userNumber")).sendKeys(mobileNumber);
         driver.findElement(By.id("submit")).click();
+        wait.until(visibilityOfElementLocated(By.id("example-modal-sizes-title-lg")));
         assertEquals(titleValidation, driver.findElement(By.id("example-modal-sizes-title-lg")).getText());
         String relativeRute = "//div[@class='modal-content']//table/tbody";
         assertEquals(name + " " + lastName, driver.findElement(By.xpath(relativeRute+"/tr[1]/td[2]")).getText());
@@ -115,7 +123,7 @@ public class Toolsqa {
         selectElementList(driver, "react-select-4-input", city);
         driver.findElement(By.id("submit")).click();
         moveScreen(driver, "down");
-        waitOwn(50);
+        waitOwn(5);
         assertEquals(invalidFieldColor, driver.findElement(By.id("firstName")).getCssValue("border-top-color"));
         assertEquals(invalidFieldColor, driver.findElement(By.id("lastName")).getCssValue("border-top-color"));
         assertEquals(invalidFieldColor, driver.findElement(By.xpath("//label[@for='gender-radio-1']")).getCssValue("color"));
