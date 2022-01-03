@@ -17,24 +17,12 @@ public class Utilities {
         }
     }
 
-    public static void waitOwn(int segundos){
-        long time = segundos * 100;
+    public static void waitOwn(int seconds){
+        long time = seconds * 1000;
         try {
             sleep(time);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
-    }
-
-
-    public static void typeInField(WebElement field, String value){
-        field.click();
-        field.clear();
-        for (int i = 0; i < value.length(); i++){
-            char c = value.charAt(i);
-            String s = new StringBuilder().append(c).toString();
-            field.sendKeys(s);
-            waitOwn(1);
         }
     }
 
@@ -116,7 +104,6 @@ public class Utilities {
         String[] convertedSubjectsArray = subjects.split(",");
         element.click();
         for (String data : convertedSubjectsArray) {
-            //typeInField(element, data.trim());
             element.sendKeys(data.trim());
             element.sendKeys(Keys.ENTER);
             }
